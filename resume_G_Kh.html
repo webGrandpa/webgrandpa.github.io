@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Giorgi Khiladze</title>
+    <style>
+        :root {
+            --strong-blue: #0056b3; /* A strong, professional blue */
+            --light-blue: #e3f2fd;  /* A very light blue for backgrounds/accents */
+            --text-dark: #212529;   /* Dark color for body text */
+            --text-medium: #495057; /* Slightly lighter text */
+            --border-color: #dee2e6; /* Subtle border color */
+            --white: #ffffff;
+            --page-bg: #f8f9fa;    /* Light background for the page */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean sans-serif font */
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--page-bg);
+            color: var(--text-dark);
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: var(--white);
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Softer shadow */
+            border-radius: 8px; /* Slightly rounded corners */
+        }
+        header {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .profile-pic {
+            width: 140px; /* Slightly smaller */
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 35px;
+            border: 4px solid var(--light-blue); /* Light blue border */
+            flex-shrink: 0;
+        }
+         @media (max-width: 650px) { /* Adjusted breakpoint */
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .profile-pic {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+             .contact-info {
+                 text-align: center;
+             }
+             h1 {
+                 font-size: 2em; /* Adjust h1 size on small screens */
+             }
+        }
+        h1 {
+            margin: 0 0 10px 0;
+            color: var(--strong-blue);
+            font-size: 2.8em; /* Slightly larger */
+            font-weight: 600;
+        }
+        .contact-info p {
+            margin: 4px 0;
+            font-size: 1em; /* Standardized font size */
+            color: var(--text-medium);
+        }
+        .contact-info a {
+            color: var(--strong-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .contact-info a:hover {
+            color: #003d80; /* Darker blue on hover */
+            text-decoration: underline;
+        }
+        h2 {
+            color: var(--strong-blue);
+            border-bottom: 2px solid var(--light-blue); /* Light blue underline */
+            padding-bottom: 8px;
+            margin-top: 40px; /* More space between sections */
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+        h3 { /* Not used extensively, keep simple if needed */
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            margin-bottom: 8px;
+            padding: 2px 0;
+        }
+
+        /* Skills & Soft Skills Styling */
+        .skills-list, .soft-skills-list {
+             display: flex;
+             flex-wrap: wrap;
+             gap: 12px; /* Slightly more gap */
+             padding-left: 0;
+         }
+         .skills-list li, .soft-skills-list li {
+             background-color: var(--light-blue); /* Light blue background */
+             color: var(--strong-blue); /* Strong blue text */
+             border: none;
+             border-radius: 15px;
+             padding: 6px 15px; /* Slightly larger padding */
+             font-size: 0.95em;
+             font-weight: 500;
+             margin-bottom: 0;
+             list-style-type: none;
+             transition: background-color 0.2s ease, color 0.2s ease;
+         }
+         .skills-list li:hover, .soft-skills-list li:hover {
+              background-color: var(--strong-blue);
+              color: var(--white);
+              cursor: default; /* Indicate non-clickable */
+         }
+
+        /* Experience, Education, Project Items */
+        .job, .education-item, .project {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 3px solid var(--strong-blue); /* Strong blue accent border */
+            position: relative; /* For potential future pseudo-elements */
+        }
+         .job p, .education-item p, .project p {
+             margin: 4px 0;
+         }
+        .job-title, .degree, .project-role {
+            font-weight: 600; /* Bolder titles */
+            color: var(--text-dark); /* Dark text for titles */
+            font-size: 1.1em;
+        }
+        .company, .institution, .project-name {
+            font-style: normal; /* Less emphasis, cleaner look */
+            color: var(--strong-blue); /* Use strong blue for company/project name */
+            font-weight: 500;
+            font-size: 1.05em;
+        }
+        .dates {
+            font-size: 0.9em;
+            color: var(--text-medium); /* Medium grey for dates */
+            margin-top: 2px;
+        }
+         .tech-stack {
+             font-size: 0.9em;
+             color: var(--text-medium);
+             margin-top: 8px;
+         }
+         .tech-stack strong {
+             color: var(--text-dark); /* Make "Tech:" slightly darker */
+             font-weight: 600;
+         }
+
+         /* Language list styling */
+         .languages ul li {
+            padding-left: 10px;
+            border-left: 3px solid var(--light-blue); /* Subtle light blue border */
+            margin-bottom: 10px;
+         }
+        .lang-level {
+            font-style: normal;
+            color: var(--text-medium); /* Medium text for level */
+            margin-left: 5px;
+            font-size: 0.95em;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="./IMG_4361 (1).jpg" alt="Photo of Giorgi Khiladze" class="profile-pic">
+
+            <div class="contact-info">
+                <h1>Giorgi Khiladze</h1>
+                <p>Batumi, Georgia | Open to Remote Work</p>
+                <p>
+                    Phone: <a href="tel:+995597728877">+995 597 72 88 77</a> |
+                    Email: <a href="mailto:giga.khilo@gmail.com">giga.khilo@gmail.com</a>
+                </p>
+                <p>
+                    <a href="https://www.linkedin.com/in/giorgi-khiladze-55bab334a/" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+                    <a href="https://github.com/webGrandpa" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </p>
+            </div>
+        </header>
+
+        <main>
+            <section class="section summary">
+                <h2>Summary</h2>
+                <p>
+                    Passionate and responsible Front-End Developer with hands-on experience in HTML, CSS, JavaScript, and modern technologies like React, Tailwind, and Sass. Currently expanding my skills in TypeScript and AI-based tools. I enjoy working in teams, taking ownership of tasks, and constantly learning. Open to new challenges and eager to grow both as a developer and a leader.
+                </p>
+            </section>
+
+            <section class="section skills">
+                <h2>Tech Skills</h2>
+                 <ul class="skills-list">
+                    <li>HTML</li> <li>CSS</li> <li>JavaScript</li> <li>TypeScript</li>
+                    <li>Vanilla JS</li> <li>Sass</li> <li>React</li> <li>Tailwind CSS</li>
+                    <li>Git</li> <li>VS Code</li> <li>Jira</li> <li>REST APIs</li>
+                    <li>Agile/Scrum</li> <li>Project Management</li>
+                 </ul>
+                 </section>
+
+            <section class="section experience">
+                <h2>Work Experience</h2>
+                <div class="job">
+                    <p><span class="job-title">Operator in Liquid Gas Station (Part-time)</span></p>
+                    <p><span class="company">Batumi Oil Terminal – Georgia</span></p>
+                    <p><span class="dates">2021 – Present</span></p>
+                </div>
+                 <div class="job">
+                    <p><span class="job-title">Owner & Project Maker (In Progress)</span></p>
+                    <p><span class="company">Greenland Pheria – Hotel Business</span></p>
+                    <p><span class="dates">2019 – 2025</span></p>
+                </div>
+                 <div class="job">
+                    <p><span class="job-title">Head Manager</span></p>
+                    <p><span class="company">Nazilbe – Georgia</span></p>
+                    <p><span class="dates">2016 – 2018</span></p>
+                </div>
+                <div class="job">
+                    <p><span class="job-title">Director</span></p>
+                    <p><span class="company">Textile Fabric Company – Istanbul, Turkey</span></p>
+                    <p><span class="dates">2013 – 2016</span></p>
+                </div>
+                <div class="job">
+                    <p><span class="job-title">Co-Owner</span></p>
+                    <p><span class="company">Fashion X – Istanbul, Turkey</span></p>
+                    <p><span class="dates">2013 – 2016</span></p>
+                </div>
+                <div class="job">
+                    <p><span class="job-title">Technical Director</span></p>
+                    <p><span class="company">Garantrez – Czech Republic</span></p>
+                    <p><span class="dates">2013 – 2016</span></p>
+                </div>
+            </section>
+
+            <section class="section education">
+                <h2>Education</h2>
+                 <div class="education-item">
+                    <p><span class="degree">Front-End Development</span></p>
+                    <p><span class="institution">10x Academy</span></p>
+                    <p><span class="dates">2024 – Present</span></p>
+                </div>
+                <div class="education-item">
+                    <p><span class="degree">Accounting</span></p>
+                    <p><span class="institution">Finance-Co Academy</span></p>
+                    <p><span class="dates">2021 – 2025</span></p>
+                </div>
+            </section>
+
+            <section class="section projects">
+                <h2>Projects</h2>
+                <div class="project">
+                     <p><span class="project-name">Finco.ge – Financial & Legal Services Company</span></p>
+                    <p><span class="project-role">Team Lead, Manager, Front-End Developer</span></p>
+                    <p class="tech-stack"><strong>Tech:</strong> React, Tailwind, Jira, Git</p>
+                </div>
+                <div class="project">
+                    <p><span class="project-name">Autoway.ge – Car Marketplace Platform</span></p>
+                     <p><span class="project-role">Team Lead, Project Manager, Front-End Developer</span></p>
+                    <p class="tech-stack"><strong>Tech:</strong> React, Tailwind, REST APIs, Agile</p>
+                </div>
+            </section>
+
+            <section class="section languages">
+                <h2>Languages</h2>
+                <ul>
+                    <li>Georgian – <span class="lang-level">Native</span></li>
+                    <li>Russian – <span class="lang-level">C2</span></li>
+                    <li>English – <span class="lang-level">B1-B2</span></li>
+                    <li>Turkish – <span class="lang-level">A2</span></li>
+                </ul>
+            </section>
+
+            <section class="section soft-skills">
+                 <h2>Soft Skills</h2>
+                 <ul class="soft-skills-list">
+                    <li>Responsibility</li>
+                    <li>Team Collaboration</li>
+                    <li>Leadership</li>
+                    <li>Task Management</li>
+                    <li>Fast Learner</li>
+                 </ul>
+            </section>
+        </main>
+
+    </div>
+    </body>
+</html>
