@@ -226,22 +226,16 @@
     <script src="js/script.js"></script>
 
     <script>
-        // Wait for the DOM to be fully loaded
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize EmailJS (your existing code is fine here)
             emailjs.init({
                 publicKey: "QKwyM4aTSSdo35eDi",
             });
     
-            // Get the form by its ID
             const contactForm = document.getElementById('contactForm');
     
-            // Add a submit event listener to the form
             contactForm.addEventListener('submit', function(event) {
-                // Prevent the default form submission that causes the 405 error
                 event.preventDefault();
     
-                // Get the form data
                 let parameters = {
                     name: document.getElementById("name").value,
                     email: document.getElementById("email").value,
@@ -249,28 +243,22 @@
                     message: document.getElementById("message").value
                 }
     
-                // Send the email using EmailJS
                 emailjs.send("service_pmzvnao", "template_2otgcyq", parameters)
                     .then(
                         (response) => {
-                            // Success callback
                             console.log('EmailJS SUCCESS!', response.status, response.text);
-                            alert("Message Sent Successfully!"); // Provide user feedback
-                            // Optional: Clear the form after successful sending
+                            alert("Message Sent Successfully!");
                             contactForm.reset();
                         },
                         (error) => {
-                            // Error callback
                             console.error('EmailJS FAILED...', error);
-                            alert("Failed to send message. Please try again later."); // Provide user feedback
+                            alert("Failed to send message. Please try again later.");
                         }
                     );
             });
     
-            // Script to update the current year in the footer
             document.getElementById('current-year').textContent = new Date().getFullYear();
     
-            // Smooth scrolling for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -280,7 +268,6 @@
                 });
             });
     
-            // Project filter functionality (your existing code is fine here)
             document.querySelectorAll('.project-filters button').forEach(button => {
                 button.addEventListener('click', function() {
                     const filter = this.getAttribute('data-filter');
@@ -297,7 +284,7 @@
                 });
             });
     
-        }); // End DOMContentLoaded
+        }); 
     </script>
 
 </body>
