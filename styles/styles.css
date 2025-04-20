@@ -517,6 +517,21 @@ footer .footer-legal a:hover {
   header .container nav ul li {
     margin: 0 10px;
   }
+  #hero-ill_man {
+    display: none;
+  }
+  .about-illustration_items {
+    display: none;
+  }
+  #contact {
+    max-width: 350px;
+  }
+  .hero-content {
+    margin-top: -500px;
+  }
+  .hero-section {
+    padding: 0;
+  }
   .hero-section,
   .about-section .container,
   .contact-section .container {
