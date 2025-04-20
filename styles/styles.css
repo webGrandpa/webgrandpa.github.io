@@ -425,6 +425,7 @@ header nav ul li a:hover {
 }
 .contact-section .contact-form-container form .form-group input[type=text],
 .contact-section .contact-form-container form .form-group input[type=email],
+.contact-section .contact-form-container form .form-group input[type=subject],
 .contact-section .contact-form-container form .form-group textarea {
   width: 100%;
   padding: 12px;
@@ -433,11 +434,12 @@ header nav ul li a:hover {
   background-color: #2c2c2c;
   font-size: 1em;
 }
-.contact-section .contact-form-container form .form-group input[type=text]::-moz-placeholder, .contact-section .contact-form-container form .form-group input[type=email]::-moz-placeholder, .contact-section .contact-form-container form .form-group textarea::-moz-placeholder {
+.contact-section .contact-form-container form .form-group input[type=text]::-moz-placeholder, .contact-section .contact-form-container form .form-group input[type=email]::-moz-placeholder, .contact-section .contact-form-container form .form-group input[type=subject]::-moz-placeholder, .contact-section .contact-form-container form .form-group textarea::-moz-placeholder {
   color: #b0b0b0;
 }
 .contact-section .contact-form-container form .form-group input[type=text]::placeholder,
 .contact-section .contact-form-container form .form-group input[type=email]::placeholder,
+.contact-section .contact-form-container form .form-group input[type=subject]::placeholder,
 .contact-section .contact-form-container form .form-group textarea::placeholder {
   color: #b0b0b0;
 }
