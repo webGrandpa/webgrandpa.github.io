@@ -226,6 +226,17 @@
 
     <script>
 
+function sendMail() {
+    let parameters = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        subject: document.getElementById("subject").value,
+        message: document.getElementById("message").value
+    }
+
+    emailjs.send("service_pmzvnao","template_2otgcyq",parameters).then(alert("Email Sent!"))
+}
+
         document.getElementById('current-year').textContent = new Date().getFullYear();
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
