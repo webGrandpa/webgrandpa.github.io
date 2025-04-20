@@ -174,8 +174,9 @@
                 <img src="./assets/project_form/spiral2.svg" alt="">
             </div>
             <div class="contact-form-container">
-                 <h2>Got a project in <span>mind?</span></h2>
-                  <form action="YOUR_FORM_HANDLER_SCRIPT_URL" method="POST"> <div class="form-group">
+                <h2>Got a project in <span>mind?</span></h2>
+                <form id="contactForm" action="YOUR_FORM_HANDLER_SCRIPT_URL" method="POST">
+                    <div class="form-group">
                         <label for="name">Your name</label>
                         <input type="text" id="name" name="name" placeholder="Name" required>
                     </div>
@@ -191,7 +192,7 @@
                          <label for="message">Your Message</label>
                         <textarea id="message" name="message" rows="6" placeholder="Message" required></textarea>
                     </div>
-                    <button type="submit" onclick="sendMail()" class="btn primary">Send Message <i class="fas fa-paper-plane"></i></button>
+                    <button type="submit" class="btn primary">Send Message <i class="fas fa-paper-plane"></i></button>
                 </form>
             </div>
         </div>
@@ -225,44 +226,78 @@
     <script src="js/script.js"></script>
 
     <script>
-
-function sendMail() {
-    let parameters = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        subject: document.getElementById("subject").value,
-        message: document.getElementById("message").value
-    }
-
-    emailjs.send("service_pmzvnao","template_2otgcyq",parameters).then(alert("Email Sent!"))
-}
-
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+        // Wait for the DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize EmailJS (your existing code is fine here)
+            emailjs.init({
+                publicKey: "QKwyM4aTSSdo35eDi",
+            });
+    
+            // Get the form by its ID
+            const contactForm = document.getElementById('contactForm');
+    
+            // Add a submit event listener to the form
+            contactForm.addEventListener('submit', function(event) {
+                // Prevent the default form submission that causes the 405 error
+                event.preventDefault();
+    
+                // Get the form data
+                let parameters = {
+                    name: document.getElementById("name").value,
+                    email: document.getElementById("email").value,
+                    subject: document.getElementById("subject").value,
+                    message: document.getElementById("message").value
+                }
+    
+                // Send the email using EmailJS
+                emailjs.send("service_pmzvnao", "template_2otgcyq", parameters)
+                    .then(
+                        (response) => {
+                            // Success callback
+                            console.log('EmailJS SUCCESS!', response.status, response.text);
+                            alert("Message Sent Successfully!"); // Provide user feedback
+                            // Optional: Clear the form after successful sending
+                            contactForm.reset();
+                        },
+                        (error) => {
+                            // Error callback
+                            console.error('EmailJS FAILED...', error);
+                            alert("Failed to send message. Please try again later."); // Provide user feedback
+                        }
+                    );
+            });
+    
+            // Script to update the current year in the footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
                 });
             });
-        });
-
-        document.querySelectorAll('.project-filters button').forEach(button => {
-            button.addEventListener('click', function() {
-                const filter = this.getAttribute('data-filter');
-                document.querySelectorAll('.project-filters button').forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-
-                document.querySelectorAll('.project-item').forEach(item => {
-                    if (filter === 'all' || item.getAttribute('data-category').includes(filter)) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
+    
+            // Project filter functionality (your existing code is fine here)
+            document.querySelectorAll('.project-filters button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    document.querySelectorAll('.project-filters button').forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+    
+                    document.querySelectorAll('.project-item').forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category').includes(filter)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
                 });
             });
-        });
-
+    
+        }); // End DOMContentLoaded
     </script>
 
 </body>
