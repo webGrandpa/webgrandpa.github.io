@@ -1,7 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TechStack from "@/components/TechStack";
-import GitHubStats from "@/components/GitHubStats";
 import Projects from "@/components/Projects";
 import Certificates from "@/components/Certificates";
 import Languages from "@/components/Languages";
@@ -15,9 +14,8 @@ const Index = () => {
       <Navbar />
       <Hero />
       <TechStack />
-      <GitHubStats />
-      <Projects />
       <Certificates />
+      <Projects />
       <Languages />
       <Footer />
     </div>

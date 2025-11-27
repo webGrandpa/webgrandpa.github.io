@@ -1,10 +1,11 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import Mail from 'lucide-react/dist/esm/icons/mail';
+import Linkedin from 'lucide-react/dist/esm/icons/linkedin';
+import Github from 'lucide-react/dist/esm/icons/github';
 import { motion } from "framer-motion";
 import ContactModal from "./ContactModal";
 
 const Footer = () => {
   return (
-    // Ensure the footer is a standard, in-flow element
     <footer className="py-20 px-4 border-t border-primary/20 relative z-10"> 
       <div className="container mx-auto">
         <div className="text-center mb-8">
@@ -33,8 +34,6 @@ const Footer = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
-            // We use 'relative' and potentially 'z-20' here to ensure the modal trigger
-            // is above any immediate background elements in the footer section.
             className="relative z-20 inline-block" 
           >
             <ContactModal />

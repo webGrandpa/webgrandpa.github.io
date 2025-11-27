@@ -8,12 +8,11 @@ const languages = [
 ];
 
 const Languages = () => {
-  // SVG circle circumference for a radius of 56 (r="56") is 2 * π * 56 ≈ 351.86, so 352 is used.
   const circumference = 352; 
 
   return (
     <section id="languages" className="py-20 px-4">
-      <div className="container mx-auto max-w-4xl relative z-20"> {/* Set to max-w-4xl for better centering */}
+      <div className="container mx-auto max-w-4xl relative z-20">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -24,11 +23,11 @@ const Languages = () => {
           <span className="text-secondary">PROTOCOLS</span>
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8"> {/* Changed to 2-column grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {languages.map((lang, index) => (
             <motion.div
               key={lang.name}
-              initial={{ opacity: 0, scale: 0.8 }} // Changed back to 0.8 for the "zoom in" effect
+              initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
@@ -45,10 +44,8 @@ const Languages = () => {
                 )}
               </div>
 
-              {/* Radial Progress Circle (Central element) */}
               <div className="relative w-32 h-32 mx-auto">
                 <svg className="w-full h-full transform -rotate-90">
-                  {/* Background Circle */}
                   <circle
                     cx="64"
                     cy="64"
@@ -58,7 +55,6 @@ const Languages = () => {
                     fill="transparent"
                     className="text-muted"
                   />
-                  {/* Progress Circle (Animated) */}
                   <motion.circle
                     cx="64"
                     cy="64"
@@ -72,15 +68,13 @@ const Languages = () => {
                       strokeDasharray: `${(lang.level / 100) * circumference} ${circumference}` 
                     }}
                     viewport={{ once: true }}
-                    transition={{ duration: 1.5, delay: index * 0.1 }} // Increased duration for smoother effect
+                    transition={{ duration: 1.5, delay: index * 0.1 }}
                     style={{
-                      // Added glow effect inline
                       filter: "drop-shadow(0 0 8px hsl(var(--secondary)))",
                     }}
                   />
                 </svg>
 
-                {/* Percentage and Flag Text Overlay */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
                   <motion.span
                     className="text-xl font-orbitron font-bold text-secondary mt-1"
@@ -94,7 +88,6 @@ const Languages = () => {
                 </div>
               </div>
 
-              {/* Status Text below the circle */}
               <div className="mt-4 text-center font-mono text-xs text-muted-foreground">
                 {lang.level === 100 
                   ? "SYSTEM LANGUAGE PROTOCOL" 

@@ -1,15 +1,11 @@
 import { motion } from "framer-motion";
-import { Swiper, SwiperSlide } from "swiper/react"; // 1. Swiper Imports
-import { EffectCoverflow, Pagination } from "swiper/modules"; // 1. Swiper Modules
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow, Pagination } from "swiper/modules";
 import { Github, ExternalLink } from "lucide-react";
-import { Button } from "./ui/button"; // Keep your existing Button component import
-
-// 2. Swiper CSS Imports
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
-// Project Data (Updated with the images from the Swiper example for visual consistency)
 const projects = [
   {
     id: 1,
@@ -59,7 +55,6 @@ const projects = [
 ];
 
 const Projects = () => {
-  // Removed useState(activeIndex) and getCardStyle since Swiper handles it now
 
   return (
     <section id="projects" className="py-20 px-4">
@@ -74,12 +69,11 @@ const Projects = () => {
           <span className="text-secondary">PROJECTS</span>
         </motion.h2>
 
-        {/* 3. SWIPER COMPONENT INTEGRATION */}
         <Swiper
           effect="coverflow"
           grabCursor={true}
           centeredSlides={true}
-          slidesPerView="auto" // Allows for the slide width to be custom defined
+          slidesPerView="auto"
           coverflowEffect={{
             rotate: 50,
             stretch: 0,
@@ -89,12 +83,11 @@ const Projects = () => {
           }}
           pagination={{ clickable: true }}
           modules={[EffectCoverflow, Pagination]}
-          className="py-12" // Padding for pagination dots
+          className="py-12"
         >
           {projects.map((project, index) => (
             <SwiperSlide 
               key={project.id} 
-              // Set the slide width for the centered effect
               className="!w-[90%] md:!w-[600px]"
             >
               <motion.div
@@ -108,12 +101,10 @@ const Projects = () => {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60" />
-
-                  {/* Hover overlay with buttons */}
                   <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
                     <a
                       href={project.github}
-                      className="glass p-4 rounded-full hover:shadow-[0_0_15px_rgba(37,99,235,0.7)] transition-all duration-300" // Use a primary color glow
+                      className="glass p-4 rounded-full hover:shadow-[0_0_15px_rgba(37,99,235,0.7)] transition-all duration-300"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -121,7 +112,7 @@ const Projects = () => {
                     </a>
                     <a
                       href={project.demo}
-                      className="glass p-4 rounded-full hover:shadow-[0_0_15px_rgba(139,92,246,0.7)] transition-all duration-300" // Use a secondary color glow
+                      className="glass p-4 rounded-full hover:shadow-[0_0_15px_rgba(139,92,246,0.7)] transition-all duration-300"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -152,10 +143,8 @@ const Projects = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        {/* END SWIPER COMPONENT */}
       </div>
 
-      {/* Custom Styles for Swiper Pagination to match your theme */}
       <style>{`
         .swiper-pagination-bullet {
           background: hsl(var(--primary) / 0.5); /* Primary color, semi-transparent */
