@@ -10,9 +10,17 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+  
+  // 🛑 CORRECT LOCATION: build property is now at the top level
+  build: {
+    outDir: 'docs', // This correctly tells Vite to output to the 'docs' folder
+    emptyOutDir: true,
+  },
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+    // 🛑 REMOVED: The incorrect nested build property was here
   },
 }));
